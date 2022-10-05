@@ -10,17 +10,12 @@ led.on()
 
 #ssid = 'Freebox-46C865'
 #password = 'eruatis!5-cogitur@-stimula4-calleantur.7'
-ssid = 'mi 9t akevalion'
-password = 'spigit123'
+ssid = 'Galaxy A510F0A'
+password = 'daniCam123'
 
-html ="""<!DOCTYPE html>
-<html>
-    <head> <title> Pi mierda </title> </head>
-    <body> <h1> Pico carajo <h1>
-        <p>%s</p>
-    <body>
-</html>
-"""
+file= open('index.html', 'r')
+html = file.read()
+file.close()
 
 wlan = network.WLAN(network.STA_IF)
 
@@ -53,8 +48,19 @@ async def handleRequest(reader, writer):
         pass
     
     request = str(requestLine)
-    
     status = ""
+    if request.find("style") != -1:
+        file= open('style.css', 'r')
+        css = file.read()
+        file.close()
+        writer.write("HTTP/1.0 200 OK\r\n\Content-type: text/css\r\n\r\n")
+        writer.write(css)
+        await writer.drain()
+        await writer.wait_closed()
+        print("Client disconnected")
+        print("css")
+        return None
+    
     if request.find("prender") != -1:
         print("led on")
         led.on()
@@ -63,7 +69,8 @@ async def handleRequest(reader, writer):
         print("led off")
         led.off()
         status = "luz apagada"
-    response = html % status
+        
+    response = html
     writer.write("HTTP/1.0 200 OK\r\n\Content-type: text/html\r\n\r\n")
     writer.write(response)
     await writer.drain()
@@ -85,3 +92,4 @@ try:
 finally:
     asyncio.new_event_loop()
     
+
