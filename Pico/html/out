@@ -1,0 +1,36 @@
+>>> %Run -c $EDITOR_CONTENT
+Conectando a la red...
+esperando conexion...
+esperando conexion...
+esperando conexion...
+connected
+ip = 192.168.80.192
+iniciando servidor...
+esperando
+esperando
+esperando
+esperando
+esperando
+esperando
+esperando
+esperando
+Cliente connectado
+Request:  b'GET / HTTP/1.1\r\n'
+Request >>> b'GET / HTTP/1.1\r\n'
+Task exception wasn't retrieved
+future: <Task> coro= <generator object 'handleRequest' at 2000af90>
+Traceback (most recent call last):
+  File "uasyncio/core.py", line 1, in run_until_complete
+  File "<stdin>", line 73, in handleRequest
+TypeError: format string didn't convert all arguments
+esperando
+esperando
+esperando
+esperando
+esperando
+Cliente connectado
+esperando
+esperando
+esperando
+esperando
+esperando
