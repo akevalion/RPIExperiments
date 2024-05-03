@@ -1,0 +1,2 @@
+from machine import Pin
+luz=Pin(Pin.OUT, 25)
