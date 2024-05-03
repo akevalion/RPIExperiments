@@ -18,16 +18,36 @@ def drawCircle():
     pass
 
 x = 0
+
 oled.fill(0)
+oled.text("Claudia I U", 0,0,1)
+matrix = [
+'01100110',
+'11111111',
+'11111111',
+'11111111',
+'11111111',
+'01111110',
+'00111100',
+'00011000'
+]
+y = 0
+for row in matrix:
+    x = 71
+    for k in row:
+        if k == '1':
+            oled.pixel(x, y, 1)
+        x = x +1
+    y = y + 1
+x = 0
 while x < 140:
     x += 1
-    y = math.sin(math.radians(x*10))
+    y = math.sin(math.radians(x*20))
     y = int(y * 10 + 40) 
     
     oled.pixel(x, y, 1)
     oled.show()
-oled.fill(0)
-oled.show()
+
     
     
     
